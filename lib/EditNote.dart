@@ -1,18 +1,24 @@
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
-class AddNote extends StatefulWidget {
-  const AddNote({Key? key}) : super(key: key);
+class EditNote extends StatefulWidget {
+  DocumentSnapshot docToEdit;
+  EditNote({required this.docToEdit});
 
   @override
-  State<AddNote> createState() => _AddNoteState();
+  _EditNoteState createState() => _EditNoteState();
 }
 
-class _AddNoteState extends State<AddNote> {
+class _EditNoteState extends State<EditNote> {
   TextEditingController title = TextEditingController();
   TextEditingController note = TextEditingController();
 
-  CollectionReference ref = FirebaseFirestore.instance.collection('Notes');
+  @override
+  void initState() {
+    title = TextEditingController(text: widget.docToEdit['title']);
+    note = TextEditingController(text: widget.docToEdit['note']);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +27,19 @@ class _AddNoteState extends State<AddNote> {
         actions: [
           TextButton(
               onPressed: () {
-                ref.add({
+                widget.docToEdit.reference.update({
                   'title': title.text,
                   'note': note.text,
                 }).whenComplete(() => Navigator.pop(context));
               },
-              child: const Text("Save"))
+              child: const Text("Save")),
+          TextButton(
+              onPressed: () {
+                widget.docToEdit.reference
+                    .delete()
+                    .whenComplete(() => Navigator.pop(context));
+              },
+              child: const Text("Delete"))
         ],
       )),
       body: Container(

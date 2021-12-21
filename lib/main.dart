@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           brightness: Brightness.dark,
           primaryColor: Colors.deepOrange,
-          primarySwatch: Colors.blueGrey,
+          primarySwatch: Colors.indigo,
         ),
         home: HomePage());
   }
