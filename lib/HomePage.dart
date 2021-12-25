@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:note_it/LoadingScreen.dart';
 import 'package:note_it/about.dart';
 import 'AddNote.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -13,6 +16,19 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final ref = FirebaseFirestore.instance.collection('Notes');
+
+  bool loading = false;
+
+  // @override
+  // void initState() {
+
+  //   if (ref == null) {
+  //     setState(() => loading = true);
+  //   } else {
+  //     loading = false;
+  //   }
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -35,15 +51,8 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            // ListTile(
-            //   title: const Text(
-            //     'Created with ❤ ️by Tauseef',
-            //     maxLines: 1,
-            //     style: TextStyle(fontSize: 18),
-            //   ),
-            //   onTap: () {},
-            // ),
             ListTile(
+              leading: Icon(Icons.info),
               title: const Text(
                 'About App',
                 style: TextStyle(
@@ -75,10 +84,7 @@ class _HomePageState extends State<HomePage> {
         child: const Icon(Icons.add),
       ),
       appBar: AppBar(
-        title: const Center(
-          child:
-              Text('note it.', style: TextStyle(fontStyle: FontStyle.italic)),
-        ),
+        title: const Center(child: Text('note it.')),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: ref.snapshots(),

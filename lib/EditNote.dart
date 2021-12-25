@@ -32,14 +32,20 @@ class _EditNoteState extends State<EditNote> {
                   'note': note.text,
                 }).whenComplete(() => Navigator.pop(context));
               },
-              child: const Text("Save")),
+              child: const Text(
+                "Save",
+                style: TextStyle(fontSize: 18),
+              )),
           TextButton(
               onPressed: () {
                 widget.docToEdit.reference
                     .delete()
                     .whenComplete(() => Navigator.pop(context));
               },
-              child: const Text("Delete"))
+              child: const Text(
+                "Delete",
+                style: TextStyle(fontSize: 18),
+              ))
         ],
       )),
       body: Container(
@@ -47,12 +53,15 @@ class _EditNoteState extends State<EditNote> {
         child: Column(
           children: [
             Container(
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 border: Border.all(),
               ),
               child: TextField(
                 controller: title,
-                decoration: const InputDecoration(hintText: "Title"),
+                decoration: const InputDecoration(
+                  hintText: "Title",
+                ),
               ),
             ),
             const SizedBox(
@@ -60,6 +69,7 @@ class _EditNoteState extends State<EditNote> {
             ),
             Expanded(
               child: Container(
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   border: Border.all(),
                 ),

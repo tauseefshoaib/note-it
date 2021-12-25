@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
 
   runApp(const MyApp());
@@ -18,6 +19,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  // bool loading = false;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,8 +28,8 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           brightness: Brightness.dark,
-          primaryColor: Colors.deepOrange,
-          primarySwatch: Colors.indigo,
+          primaryColor: Colors.amber,
+          primarySwatch: Colors.amber,
         ),
         home: HomePage());
   }

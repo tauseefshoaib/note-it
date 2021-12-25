@@ -26,7 +26,10 @@ class _AddNoteState extends State<AddNote> {
                   'note': note.text,
                 }).whenComplete(() => Navigator.pop(context));
               },
-              child: const Text("Save"))
+              child: const Text(
+                "Save",
+                style: TextStyle(fontSize: 18),
+              ))
         ],
       )),
       body: Container(
@@ -34,12 +37,14 @@ class _AddNoteState extends State<AddNote> {
         child: Column(
           children: [
             Container(
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 border: Border.all(),
               ),
               child: TextField(
                 controller: title,
-                decoration: const InputDecoration(hintText: "Title"),
+                decoration: const InputDecoration(
+                    hintText: "Title", hintStyle: TextStyle(fontSize: 25)),
               ),
             ),
             const SizedBox(
@@ -47,6 +52,7 @@ class _AddNoteState extends State<AddNote> {
             ),
             Expanded(
               child: Container(
+                padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   border: Border.all(),
                 ),
@@ -54,7 +60,8 @@ class _AddNoteState extends State<AddNote> {
                   controller: note,
                   maxLines: null,
                   expands: true,
-                  decoration: const InputDecoration(hintText: "Note"),
+                  decoration: const InputDecoration(
+                      hintText: "Note", hintStyle: TextStyle(fontSize: 20)),
                 ),
               ),
             ),
