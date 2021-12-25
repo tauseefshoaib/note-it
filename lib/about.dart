@@ -16,7 +16,7 @@ class AboutApp extends StatelessWidget {
           // crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Created withText ❤ ️by Tauseef'),
+            Text('Created with ❤ by Tauseef'),
             SizedBox(
               height: 15,
             ),

@@ -84,7 +84,8 @@ class _HomePageState extends State<HomePage> {
         child: const Icon(Icons.add),
       ),
       appBar: AppBar(
-        title: const Center(child: Text('note it.')),
+        centerTitle: true,
+        title: Text('note it.'),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: ref.snapshots(),
